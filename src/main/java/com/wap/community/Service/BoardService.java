@@ -6,6 +6,8 @@ import com.wap.community.Repository.BoardRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class BoardService {
@@ -16,5 +18,9 @@ public class BoardService {
         article.setContent(request.getContent());
         boardRepository.save(article);
         return article;
+    }
+
+    public List<Article> getAllArticles() {
+        return boardRepository.findAllByOrderByIdDesc();
     }
 }

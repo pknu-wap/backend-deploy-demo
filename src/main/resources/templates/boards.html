@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Board Articles</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 2rem auto;
+            max-width: 720px;
+            padding: 0 1rem;
+            line-height: 1.5;
+        }
+        h1 {
+            margin-bottom: 1rem;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        li {
+            border: 1px solid #dcdcdc;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 0.75rem;
+            background: #fafafa;
+        }
+        .article-id {
+            display: inline-block;
+            font-size: 0.85rem;
+            color: #666;
+            margin-bottom: 0.35rem;
+        }
+        .empty {
+            color: #666;
+            border: 1px dashed #c5c5c5;
+            border-radius: 8px;
+            padding: 1rem;
+        }
+    </style>
+</head>
+<body>
+<h1>Board Articles</h1>
+
+<p class="empty" th:if="${#lists.isEmpty(articles)}">No articles have been created yet.</p>
+
+<ul th:unless="${#lists.isEmpty(articles)}">
+    <li th:each="article : ${articles}">
+        <span class="article-id" th:text="'#' + ${article.id}">#1</span>
+        <div th:text="${article.content}">Article content</div>
+    </li>
+</ul>
+</body>
+</html>
