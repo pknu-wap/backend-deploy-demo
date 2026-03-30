@@ -2,7 +2,7 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>Board Articles</title>
     <style>
         body {
@@ -12,14 +12,53 @@
             padding: 0 1rem;
             line-height: 1.5;
         }
+
         h1 {
             margin-bottom: 1rem;
         }
+
+        form {
+            border: 1px solid #dcdcdc;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            background: #f7f7f7;
+        }
+
+        textarea {
+            width: 100%;
+            box-sizing: border-box;
+            min-height: 110px;
+            border: 1px solid #cfcfcf;
+            border-radius: 6px;
+            padding: 0.6rem;
+            font: inherit;
+            resize: vertical;
+        }
+
+        button {
+            margin-top: 0.7rem;
+            border: 0;
+            border-radius: 6px;
+            background: #222;
+            color: #fff;
+            padding: 0.55rem 0.9rem;
+            cursor: pointer;
+        }
+
+        #submit-status {
+            margin-top: 0.6rem;
+            font-size: 0.92rem;
+            color: #444;
+            min-height: 1.2rem;
+        }
+
         ul {
             list-style: none;
             padding: 0;
             margin: 0;
         }
+
         li {
             border: 1px solid #dcdcdc;
             border-radius: 8px;
@@ -27,12 +66,14 @@
             margin-bottom: 0.75rem;
             background: #fafafa;
         }
+
         .article-id {
             display: inline-block;
             font-size: 0.85rem;
             color: #666;
             margin-bottom: 0.35rem;
         }
+
         .empty {
             color: #666;
             border: 1px dashed #c5c5c5;
@@ -44,6 +85,13 @@
 <body>
 <h1>Board Articles</h1>
 
+<form id="article-form">
+    <label for="content">글을 작성해보세요!</label>
+    <textarea id="content" name="content" placeholder="내용을 입력해주세요" required></textarea>
+    <button type="submit">작성</button>
+    <div id="submit-status"></div>
+</form>
+
 <p class="empty" th:if="${#lists.isEmpty(articles)}">No articles have been created yet.</p>
 
 <ul th:unless="${#lists.isEmpty(articles)}">
@@ -52,5 +100,43 @@
         <div th:text="${article.content}">Article content</div>
     </li>
 </ul>
+<script>
+    const form = document.getElementById("article-form");
+    const contentInput = document.getElementById("content");
+    const statusBox = document.getElementById("submit-status");
+
+    form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+
+        const content = contentInput.value.trim();
+        if (!content) {
+            statusBox.textContent = "Please enter content.";
+            return;
+        }
+
+        statusBox.textContent = "작성 중...";
+
+        try {
+            const response = await fetch("/", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({content})
+            });
+
+            if (!response.ok) {
+                statusBox.textContent = "글 작성에 실패했습니다.";
+                return;
+            }
+
+            contentInput.value = "";
+            statusBox.textContent = "불러오는 중...";
+            window.location.reload();
+        } catch (error) {
+            statusBox.textContent = "오류가 발생했습니다.";
+        }
+    });
+</script>
 </body>
 </html>
