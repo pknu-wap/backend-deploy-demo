@@ -5,7 +5,11 @@ import com.wap.community.Entity.Article;
 import com.wap.community.Service.BoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/boards")
@@ -14,8 +18,8 @@ public class BoardController {
     private final BoardService boardService;
 
     @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public Article CreateArticle(@RequestBody CreateArticleRequest request) {
-        return boardService.CreateArticle(request);
+    public ResponseEntity<Article> CreateArticle(@RequestBody CreateArticleRequest request) {
+        Article article = boardService.CreateArticle(request);
+        return new ResponseEntity<>(article, HttpStatus.CREATED);
     }
 }
