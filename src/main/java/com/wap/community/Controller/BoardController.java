@@ -11,22 +11,20 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-@RequestMapping("/boards")
 @RequiredArgsConstructor
 public class BoardController {
     private final BoardService boardService;
 
-    @GetMapping
+    @GetMapping("/")
     public String getBoardsPage(Model model) {
         model.addAttribute("articles", boardService.getAllArticles());
         return "boards";
     }
 
-    @PostMapping
+    @PostMapping("/")
     @ResponseBody
     public ResponseEntity<Article> CreateArticle(@RequestBody CreateArticleRequest request) {
         Article article = boardService.CreateArticle(request);
