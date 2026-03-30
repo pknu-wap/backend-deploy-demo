@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>Board Articles</title>
+    <title>Wap 채팅방</title>
     <style>
         body {
             font-family: sans-serif;
@@ -83,7 +83,7 @@
     </style>
 </head>
 <body>
-<h1>Board Articles</h1>
+<h1>Wap 채팅방</h1>
 
 <form id="article-form">
     <label for="content">글을 작성해보세요!</label>
@@ -92,7 +92,7 @@
     <div id="submit-status"></div>
 </form>
 
-<p class="empty" th:if="${#lists.isEmpty(articles)}">No articles have been created yet.</p>
+<p class="empty" th:if="${#lists.isEmpty(articles)}">아직 작성된 글이 없습니다.</p>
 
 <ul th:unless="${#lists.isEmpty(articles)}">
     <li th:each="article : ${articles}">
@@ -110,7 +110,7 @@
 
         const content = contentInput.value.trim();
         if (!content) {
-            statusBox.textContent = "Please enter content.";
+            statusBox.textContent = "내용을 입력해주세요.";
             return;
         }
 
