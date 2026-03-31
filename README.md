@@ -11,7 +11,7 @@
 <kbd><img width="1241" height="178" alt="image" src="https://github.com/user-attachments/assets/5fb201dc-73c0-4937-a62f-6c79e0c5a644" /></kbd>  
 
 깃허브에 로그인한 후,  
-[이 레포지토리](https://github.com/pknu-wap/backend-deploy-demo)의 우측 상단에서 **Fork** 버튼을 누릅니다.  
+이 레포지토리의 우측 상단에서 **Fork** 버튼을 누릅니다.  
 
 <br />  
 
