@@ -4,6 +4,8 @@
 
 세미나 자료는 [여기](https://www.canva.com/design/DAHFDZJ7Qk0/phZDd37a8nAdFL1B8IKCBg/edit)에서 확인하실 수 있습니다.
 
+실습 중 질문이 있다면 [https://app.sli.do/event/i7Ddk1SWogVBEEURyzot7o/live/questions](https://app.sli.do/event/i7Ddk1SWogVBEEURyzot7o/live/questions)에 남겨주세요!
+
 ---  
 
 ## 1. 레포지토리 포크하기  
