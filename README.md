@@ -230,7 +230,7 @@ java -jar build/libs/community-0.0.1-SNAPSHOT.jar
 
 ## 5. 다른 사람과 공유  
 
-[https://github.com/pknu-wap/backend-deploy-demo/issues/1](https://github.com/pknu-wap/backend-deploy-demo/issues/1) 에 배포한 웹 사이트의 링크를 댓글로 남겨주세요!  
+[https://github.com/pknu-wap/backend-deploy-demo/issues/2](https://github.com/pknu-wap/backend-deploy-demo/issues/2) 에 배포한 웹 사이트의 링크를 댓글로 남겨주세요!  
 
 다른 사람들의 웹 사이트가 잘 접속되는지/잘 작동하는지 확인하고, 자신의 웹 사이트가 잘 작동하는지 옆 사람한테 확인을 부탁해보세요!  
 
